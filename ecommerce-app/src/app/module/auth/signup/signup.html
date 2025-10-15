@@ -1,0 +1,41 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <h1>Shop with Xpertern</h1>
+        <div>
+
+            <mat-form-field class="w-full">
+                <mat-label>Full Name</mat-label>
+                <input matInput formControlName="firstName" required firstName>
+                <mat-error *ngIf="loginForm.controls['firstName'].hasError('required')">First Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" required lastName>
+                <mat-error *ngIf="loginForm.controls['lastName'].hasError('required')">Last Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required email>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('email')">Please enter a valid email</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" required password>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Password should be 8 characters long</mat-error>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button class="w-full" style="padding: 1.7rem;" color="accent">REGISTER</button>
+            </div>
+            <div class="pt-5">
+                <span>ALready have account?</span>
+                <button mat-button color="accent" (click)="changeTemplate()">LOGIN</button>
+            </div>
+        </div>
+    </form>
+</div>

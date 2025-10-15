@@ -1,0 +1,39 @@
+cat > .gitignore <<'EOF'
+# Java / Spring Boot
+/target/
+/build/
+/out/
+/*.class
+*.log
+*.jar
+*.war
+/*.iml
+/.idea/
+/.vscode/
+
+# Maven specific
+.settings/
+dependency-reduced-pom.xml
+release.properties
+
+# Gradle specific
+.gradle/
+build/
+
+# Node / Angular
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular/
+/frontend/.expo/
+npm-debug.log
+yarn-error.log
+
+# Env and local config
+*.env
+application-local.properties
+application-dev.properties
+.DS_Store
+
+# OS
+Thumbs.db
+EOF
