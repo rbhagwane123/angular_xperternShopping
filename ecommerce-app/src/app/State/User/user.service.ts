@@ -51,6 +51,6 @@ export class UserService {
   logout()
   {
     localStorage.removeItem('jwt');
-    // this.store.dispatch()
+    this.store.dispatch(logoutSuccess());
   }
 }

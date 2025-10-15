@@ -9,7 +9,8 @@
             </div>
             <div class="">
                 <div class="flex items-center  space-x-4">
-                    <a routerLink="/" class="text-gray-800 font-semibold text-lg" style="text-decoration: none;"> XperternOne </a>
+                    <a routerLink="/" class="text-gray-800 font-semibold text-lg" style="text-decoration: none;">
+                        XperternOne </a>
                     <div>
                         <button class="open-button" matButton (click)="openNavbarContent('men')">Men</button>
                     </div>
@@ -40,7 +41,7 @@
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Visit Profile</button>
                         <button (click)="navigateTo('account/orders')" mat-menu-item>Orders</button>
-                        <button mat-menu-item>Logout</button>
+                        <button mat-menu-item (click)="handleLogout()">Logout</button>
                     </mat-menu>
                 </div>
             </div>

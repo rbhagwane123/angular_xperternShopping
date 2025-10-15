@@ -59,6 +59,10 @@ export class Navbar implements OnInit {
     });
   }
 
+  handleLogout = () => {
+    this.userService.logout();
+  };
+
   closeNavbarContent() {
     this.isNavbarContentOpen = false;
   }
