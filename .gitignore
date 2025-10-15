@@ -19,6 +19,8 @@ release.properties
 # Gradle specific
 .gradle/
 build/
+backend/
+
 
 # Node / Angular
 /frontend/node_modules/
