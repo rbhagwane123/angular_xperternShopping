@@ -18,8 +18,8 @@ export const productReducer = createReducer(
   initialState,
   on(findProductByCategorySuccess, (state, { payload }) => ({
     ...state,
-    product: payload,
-    content: payload.content,
+    products: payload,
+    content: payload,
     loading: false,
   })),
   on(findProductByIdSuccess, (state, { payload }) => ({

@@ -14,6 +14,7 @@ import { select, Store, StoreModule } from '@ngrx/store';
 import { UserService } from './State/User/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AppState } from './models/AppState';
+import { CartService } from './State/Cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +30,16 @@ export class App implements OnInit {
   constructor(
     private userService: UserService,
     private dialog: MatDialog,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
     if (typeof window !== 'undefined' && localStorage) {
-      if (localStorage.getItem('jwt')) this.userService.getUserProfile();
+      if (localStorage.getItem('jwt')) {
+        this.userService.getUserProfile();
+        this.cartService.getCart();
+      }
       this.store.pipe(select((store) => store.auth)).subscribe((user) => {
         this.userService.getUserProfile();
       });

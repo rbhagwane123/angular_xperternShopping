@@ -2,20 +2,19 @@
     <p class="text-gray-500 py-10">product/clothes/women/saree</p>
     <section class="lg:grid grid-cols-3 lg:gap-10">
         <div class="col-span-2 flex items-center flex-col">
-            <img src="https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/x/m/n/40-men-regular-slim-fit-solid-button-down-collar-formal-shirt-original-imagf4mn9zg7qrmf-bb.jpeg?q=70"
-                alt="">
+            <img [src]="product.imagUrl" alt="">
         </div>
 
         <div class="col-span-1 space-y-10 mt-10 lg:mt-0">
             <div class="space-y-2">
-                <p class="font-semibold text-gray-600 text-lg">Nofilter</p>
-                <div class="text-xl">Men Solid Pure Cotton Straight Kurta</div>
+                <p class="font-semibold text-gray-600 text-lg">{{product.brand}}</p>
+                <div class="text-xl">{{product.title}}</div>
             </div>
 
             <div class="flex item-center space-x-5">
-                <p class="text-lg">₹393</p>
-                <p class="text-lg text-gray-700 line-through">₹2993</p>
-                <p class="text-green-400 font-bold">80%</p>
+                <p class="text-lg">₹{{product.discountedPrice}}</p>
+                <p class="text-lg text-gray-700 line-through">{{product.price}}</p>
+                <p class="text-green-400 font-bold">{{product.discountPercent}}%</p>
             </div>
             <div class="">
                 <p class="text-lg font-semibold">Size</p>
@@ -32,9 +31,7 @@
             </div>
 
             <div>
-                <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod tempora quas
-                    expedita. Eveniet, explicabo tenetur! Hic doloribus adipisci tenetur velit dolorum dolore vero quae,
-                    numquam possimus consectetur eum sequi dolores.</p>
+                <p class="text-gray-600">{{product.description}}</p>
 
                 <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod tempora quas
                     expedita. Eveniet, explicabo tenetur! Hic doloribus adipisci tenetur velit dolorum dolore vero quae,

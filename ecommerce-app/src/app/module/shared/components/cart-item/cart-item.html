@@ -1,18 +1,16 @@
 <div class="p-5 shadow-lg">
     <div class="flex items-center">
         <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
-            <img class="w-full h-full object-cover"
-                src="https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/x/m/n/40-men-regular-slim-fit-solid-button-down-collar-formal-shirt-original-imagf4mn9zg7qrmf-bb.jpeg?q=70"
-                alt="">
+            <img class="w-full h-full object-cover" [src]="cartItem.product.imagUrl" alt="">
         </div>
         <div class="ml-5 space-y-1">
-            <p class="font-semibold">Men Solid Cotton Blend Staright Shirt</p>
-            <p class="text-gray-500">Size : M, White</p>
+            <p class="font-semibold">{{cartItem.product.title}}</p>
+            <p class="text-gray-500">Size : {{cartItem.size}}, {{cartItem.product.color}}</p>
             <p class="text-gray-500 mt-2">Seller : KSH Trendz</p>
             <div class="flex space-x-2 items-center pt-3">
-                <p class="text-gray-500 line-through">₹1499</p>
-                <p class="font-semibold text-lg">₹265</p>
-                <p class="text-green-600 font-semibold">60%</p>
+                <p class="text-gray-500 line-through">₹{{cartItem.price}}</p>
+                <p class="font-semibold text-lg">₹{{cartItem.discountPrice}}</p>
+                <p class="text-green-600 font-semibold">{{cartItem.product.discountPercent}}%</p>
             </div>
         </div>
     </div>

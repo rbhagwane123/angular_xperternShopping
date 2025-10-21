@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './module/feature/components/home/home';
 import { Products } from './module/feature/components/products/products';
-import { Cart } from './module/feature/components/cart/cart';
+
 import { ProductDetails } from './module/feature/components/product-details/product-details';
 import { Checkout } from './module/feature/components/checkout/checkout';
 import { Payment } from './module/feature/components/payment/payment';
@@ -13,6 +13,7 @@ import { AdminProducts } from './module/admin/components/admin-products/admin-pr
 import { OrderTables } from './module/admin/components/order-tables/order-tables';
 import { Customers } from './module/admin/components/customers/customers';
 import { CreateProduct } from './module/admin/components/create-product/create-product';
+import { Cart } from './module/feature/components/cart/cart';
 
 export const routes: Routes = [
   {

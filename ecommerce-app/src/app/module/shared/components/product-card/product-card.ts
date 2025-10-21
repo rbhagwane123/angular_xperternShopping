@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,16 +7,17 @@ import { Router } from '@angular/router';
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })
-export class ProductCard {
+export class ProductCard implements OnInit {
   @Input() product: any;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    
+    // console.log('Product-Card details ', this.product.imageUrl);
   }
 
-  navigate() {
-    this.router.navigate([`/product-details/5`]);
+  navigate(productId: any) {
+    
+    this.router.navigate([`/product-details/${productId}`]);
   }
 }

@@ -2,16 +2,27 @@ import { createReducer, on, State } from '@ngrx/store';
 import { CartService } from './cart.service';
 import {
   addItemToCartFailure,
+  addItemToCartRequest,
   addItemToCartSuccess,
   getCartItemFailure,
+  getCartItemRequest,
   getCartItemSuccess,
   removeCartItemFailure,
+  removeCartItemRequest,
   removeCartItemSuccess,
   updateCartItemFailure,
+  updateCartItemRequest,
   updateCartItemSuccess,
 } from './cart.action';
 
-const initialState = {
+export interface CartState {
+  cartItems: any[];
+  loading: boolean;
+  error: any;
+  cart: any;
+}
+
+export const initialState: CartState = {
   cartItems: [],
   loading: false,
   error: null,
@@ -20,28 +31,44 @@ const initialState = {
 
 export const cartReducer = createReducer(
   initialState,
-  on(addItemToCartSuccess, (state) => ({
+
+  on(
+    addItemToCartRequest,
+    getCartItemSuccess,
+    removeCartItemRequest,
+    updateCartItemRequest,
+    (state) => ({
+      ...state,
+      loading: true,
+      error: null,
+    })
+  ),
+
+  on(addItemToCartSuccess, (state, action) => ({
     ...state,
-    loading: true,
-    error: null,
+    loading: false,
+    cartItems: [...state.cartItems, action.payload],
   })),
 
-  on(getCartItemSuccess, (state) => ({
+  on(getCartItemSuccess, (state, action) => ({
     ...state,
-    loading: true,
-    error: null,
+    loading: false,
+    cartItems: action.payload.cartitems,
+    cart: action.payload,
   })),
 
-  on(removeCartItemSuccess, (state) => ({
+  on(removeCartItemSuccess, (state, action) => ({
     ...state,
-    loading: true,
-    error: null,
+    loading: false,
+    cartItems: state.cartItems.filter((item) => item.id !== action.cartItemId),
   })),
 
-  on(updateCartItemSuccess, (state) => ({
+  on(updateCartItemSuccess, (state, action) => ({
     ...state,
-    loading: true,
-    error: null,
+    loading: false,
+    cartItems: state.cartItems.map((item) =>
+      item.id === action.payload.id ? action.payload : item
+    ),
   })),
 
   on(

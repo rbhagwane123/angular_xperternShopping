@@ -1,6 +1,6 @@
-<div (click)="navigate()" class="productCard w-[17rem] m-3 transition-all cursor-pointer">
+<div (click)="navigate(product.id)" class="productCard w-[17rem] m-3 transition-all cursor-pointer">
     <div class="h-[20rem]">
-        <img class="h-full w-full" [src]="product.imageUrl" alt="Pants">
+        <img class="h-full w-full" [src]="product.imagUrl" alt="Pants">
     </div>
 
     <div class="textPart p-3  rounded-b-md">
@@ -13,7 +13,7 @@
         <div class="flex space-x-2 items-center">
             <p class="font-bold">₹{{product.discountedPrice}}</p>
             <p class="text-gray-600 line-through">₹{{product.price}}</p>
-            <p class="text-green-600 font-semibold">{{product.disscount}}%</p>
+            <p class="text-green-600 font-semibold">{{product.discountPercent}}%</p>
         </div>
 
     </div>

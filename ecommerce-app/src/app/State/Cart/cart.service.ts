@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Router } from 'express';
 import { BASE_API_URL } from '../../config/api';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, of } from 'rxjs';
@@ -28,16 +27,12 @@ export class CartService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  constructor(
-    private store: Store,
-    private http: HttpClient,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private store: Store, private http: HttpClient, private route: ActivatedRoute) {}
 
   addItemCart(reqData: any) {
+    console.log('Add item data : ', reqData);
     const headers = new HttpHeaders({
-      'Content-Type': 'application/jon',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 
@@ -45,6 +40,7 @@ export class CartService {
       .put(`${this.url}/add`, reqData, { headers })
       .pipe(
         map((data: any) => {
+          console.log('Item added successfully', data);
           return addItemToCartSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -62,7 +58,7 @@ export class CartService {
 
   getCart() {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/jon',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 
@@ -70,7 +66,7 @@ export class CartService {
       .get(`${this.url}/`, { headers })
       .pipe(
         map((data: any) => {
-          console.log('Cart Items ', data);
+          console.log('Service Cart Items ', data);
           return getCartItemSuccess({ payload: data });
         }),
         catchError((error: any) => {
