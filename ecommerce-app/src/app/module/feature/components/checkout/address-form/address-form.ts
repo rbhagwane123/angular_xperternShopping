@@ -12,6 +12,9 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OrderService } from '../../../../../State/Order/order.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../../../../models/AppState';
 
 @Component({
   selector: 'app-address-form',
@@ -32,7 +35,11 @@ export class AddressForm {
   addresses = [1, 1, 1];
   myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private orderService: OrderService,
+    private store: Store<AppState>
+  ) {
     this.myForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -48,6 +55,11 @@ export class AddressForm {
 
   handleSubmit = () => {
     const formValue = this.myForm.value;
+    this.orderService.createOrder(formValue);
+
+    this.store.pipe(select((store) => store.cart)).subscribe((cart) => {
+    });
+
     console.log('Form data', formValue);
   };
 }

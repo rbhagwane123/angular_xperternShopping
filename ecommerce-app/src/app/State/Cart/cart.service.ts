@@ -66,7 +66,7 @@ export class CartService {
       .get(`${this.url}/`, { headers })
       .pipe(
         map((data: any) => {
-          console.log('Service Cart Items ', data);
+          // console.log('Service Cart Items ', data);
           return getCartItemSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -82,9 +82,9 @@ export class CartService {
       .subscribe((action) => this.store.dispatch(action));
   }
 
-  removeCart(cartItemId: Number) {
+  removeCartItem(cartItemId: Number) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/jon',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 
@@ -108,14 +108,14 @@ export class CartService {
       .subscribe((action) => this.store.dispatch(action));
   }
 
-  updateCart(reqData: any) {
+  updateCartItem(reqData: any) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/jon',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 
     return this.http
-      .put(`${this.API_BASE_URL}/api/cart_items/${reqData.data}`, { headers })
+      .put(`${this.API_BASE_URL}/api/cart_items/`, reqData, { headers })
       .pipe(
         map((data: any) => {
           console.log('updated Items ', data);

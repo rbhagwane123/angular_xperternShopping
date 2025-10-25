@@ -30,14 +30,28 @@ export class CartItem implements OnInit {
     // this.store.pipe(select((store) => store.cart)).subscribe((cart) => {
     //   this.cartItems = cart.cartItems;
     // });
-    console.log('Cart Product from Cart-Item : ', this.cartItem);
   }
 
   updateCartItem(num: number) {
+    this.cartService.updateCartItem({
+      cartItemId: this.cartItem.id,
+      data: { quantity: num + this.cartItem.quantity },
+    });
+
+    this.store.pipe(select((store) => store.cart)).subscribe((cart) => {
+      this.cartItem = cart.cartItems;
+      
+    });
+
     console.log(num);
   }
 
   removeCartItem() {
-    console.log('remove cart item');
+    this.cartService.removeCartItem(this.cartItem.id);
+    
+    this.store.pipe(select((store) => store.cart)).subscribe((cart) => {
+      this.cartItem = cart.cartItems;
+      
+    });
   }
 }

@@ -28,7 +28,7 @@ export class OrderService {
 
   createOrder(reqData: any) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/jon',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     });
 

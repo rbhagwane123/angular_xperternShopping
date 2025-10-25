@@ -37,12 +37,13 @@ export class App implements OnInit {
   ngOnInit() {
     if (typeof window !== 'undefined' && localStorage) {
       if (localStorage.getItem('jwt')) {
-        this.userService.getUserProfile();
-        this.cartService.getCart();
+        // this.userService.getUserProfile();
+        // this.cartService.getCart();
+        this.store.pipe(select((store) => store.auth)).subscribe((user) => {
+          this.userService.getUserProfile();
+          this.cartService.getCart();
+        });
       }
-      this.store.pipe(select((store) => store.auth)).subscribe((user) => {
-        this.userService.getUserProfile();
-      });
     }
   }
 }

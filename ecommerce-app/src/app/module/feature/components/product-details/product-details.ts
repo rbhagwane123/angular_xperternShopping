@@ -54,7 +54,8 @@ export class ProductDetails {
     this.productService.findProductById(this.productId);
 
     this.store.pipe(select((store) => store.product)).subscribe((product) => {
-      this.product = product.product;
+      this.product = product?.product;
+      console.log('Product Details from : ', this.product);
     });
   }
 
@@ -66,7 +67,7 @@ export class ProductDetails {
     };
 
     this.cartService.addItemCart(reqData);
-  
+
     this.cartService.getCart();
     this.router.navigate(['cart']);
   }

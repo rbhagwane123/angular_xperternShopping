@@ -1,10 +1,10 @@
 <div class="space-y-3">
-    <p class="font-semibold">Xpertern</p>
-    <p>Mumbai, Thane, new Shivam building</p>
+    <p class="font-semibold">{{address.firstName}} {{address.lastName}}</p>
+    <p>{{address.streetAddress}} {{address.city}}, {{address.state}} - {{address.zipCode}}</p>
     <div class="space-y-1">
 
         <p class="font-semibold">Phone Number</p>
-        <p>+91 9768522052</p>
+        <p>{{address.mobile}}</p>
 
     </div>
 </div>
