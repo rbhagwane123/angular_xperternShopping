@@ -38,13 +38,14 @@ export class PaymentService {
     const headers = this.getHeader();
 
     return this.http
-      .get(url, { headers })
+      .post(url, {}, { headers })
       .pipe(
         map((data: any) => {
           console.log('Payment link', data);
-          if (data.payment_link_url) {
-            window.location.href = data.payment_link_url;
+          if (data.paymentLinkUrl) {
+            window.location.href = data.paymentLinkUrl;
           }
+
           return createPaymentRequest({ orderId: data });
         }),
         catchError((error: any) => {
@@ -68,7 +69,6 @@ export class PaymentService {
       .get(url, { headers })
       .pipe(
         map((data: any) => {
-          
           return updatePaymentRequest({ payload: data });
         }),
         catchError((error: any) => {

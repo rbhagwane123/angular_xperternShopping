@@ -52,8 +52,8 @@ export class Payment implements OnInit {
 
   navigateToPayment = () => {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) this.paymentService.createPayment(id);
-
-    
+    if (id) {
+      this.paymentService.createPayment(id);
+    }
   };
 }
